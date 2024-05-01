@@ -2,11 +2,11 @@ version: "3"
 
 services:
 
-  document_service:
+  egensign_service:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    container_name: document_service
+    container_name: egensign_service
     network_mode: host
     env_file:
       - ./.envs/.django
