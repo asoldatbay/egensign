@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.viewsets import ViewSet
 
 from src.documents.serializers.generate import GenerateSerializer
+from src.documents.services.convertapi import ConvertAPIService
 from src.templates.dispatcher import dispatcher
 from src.templates.models import Template
 from src.templates.scripts.base_script import BaseScript
@@ -20,4 +21,6 @@ class GenerateViewSet(ViewSet):
 
         file64, file_type = script_class.preview(request)
 
-        return HttpResponse(file64, content_type=file_type)
+        convert_response, file_type = ConvertAPIService.docx_to_pdf(file64)
+
+        return HttpResponse(convert_response["Files"][0]["FileData"], content_type=file_type)
