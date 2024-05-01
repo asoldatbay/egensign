@@ -1,6 +1,6 @@
 from django.db import models
 
-from src.templates.models import Template
+from templates.models import Template
 
 
 class Document(models.Model):

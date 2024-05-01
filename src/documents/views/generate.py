@@ -2,11 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from rest_framework.viewsets import ViewSet
 
-from src.documents.serializers.generate import GenerateSerializer
-from src.documents.services.convertapi import ConvertAPIService
-from src.templates.dispatcher import dispatcher
-from src.templates.models import Template
-from src.templates.scripts.base_script import BaseScript
+from documents.serializers.generate import GenerateSerializer
+from documents.services.convertapi import ConvertAPIService
+from templates.dispatcher import dispatcher
+from templates.models import Template
+from templates.scripts.base_script import BaseScript
 
 
 class GenerateViewSet(ViewSet):
@@ -19,7 +19,7 @@ class GenerateViewSet(ViewSet):
         template = get_object_or_404(Template, id=generate_serializer.validated_data["template_id"])
         script_class: BaseScript = dispatcher.get_script_class(template)
 
-        file64, file_type = script_class.preview(request)
+        file64, file_type = script_class().preview(request)
 
         convert_response, file_type = ConvertAPIService.docx_to_pdf(file64)
 

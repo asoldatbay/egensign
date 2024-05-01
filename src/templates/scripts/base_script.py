@@ -1,4 +1,5 @@
 import base64
+import json
 import random
 import string
 from io import BytesIO
@@ -76,7 +77,7 @@ class BaseScript:
         if not request.data.get('filled_data', None):
             raise ParseError(detail='Missing filling data')
 
-        return request.data["filled_data"]
+        return json.loads(request.data["filled_data"])
 
     @classmethod
     def generate_header(cls, doc, data):

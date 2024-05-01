@@ -7,13 +7,13 @@ from templates.models import Template
 from templates.scripts.base_script import BaseScript
 
 
-class ResignScript(BaseScript):
+class PregnancyVacationScript(BaseScript):
 
-    template = Template.objects.get(script_code="a53fb639-15b4-468c-9e28-b696e063098a")
+    template = Template.objects.get(script_code="9072546d-77e7-4b74-9263-54895d0cf246")
 
     @classmethod
     def _get_default_filename(cls):
-        return "resign"
+        return "pregnancy_vacation"
 
     # @classmethod
     # def _get_bucket_name(cls):
@@ -30,8 +30,9 @@ class ResignScript(BaseScript):
     @classmethod
     def generate_header(cls, doc, data):
         # Add header content
-        header_content = f"{data['receiver_position']}\n{data['receiver_fullname']}\n" \
-                         f"от сотрудника\n{data['sender_fullname']}"
+        header_content = f"Директору {data['organization']}\n" \
+                         f"{data['organization_head']}\n" \
+                         f"от {data['applicant']}"
         header_paragraph = doc.add_paragraph(header_content)
         header_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT  # Align to the right
         cls._set_font(doc, "Calibri")
@@ -42,14 +43,15 @@ class ResignScript(BaseScript):
     def generate_body(cls, doc, data):
         # Add body title centered and in bold
         title_paragraph = doc.add_paragraph()
-        title_run = title_paragraph.add_run("ЗАЯВЛЕНИЕ")
+        title_run = title_paragraph.add_run(
+            f"Уважаемая {data['faculty_head_fullname']}"
+        )
         title_run.bold = True
         title_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
         cls._set_font(doc, "Calibri")
 
         # Add body content with indentation
-        body_content = f"\tПрошу уволить меня по собственному желанию с {data['from_date']}"
-        body_content += f" {data['reason']}." if data['reason'] else "."
+        body_content = f"Прошу предоставить мне декретный отпуск по беременности и родам продолжительностью {data['days']} календарных дней в период с {data['date_from']} и выплатить единовременное пособие."
         body_paragraph = doc.add_paragraph(body_content)
         body_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
         cls._set_font(doc, "Calibri")
@@ -60,7 +62,7 @@ class ResignScript(BaseScript):
     def generate_footer(cls, doc, data=None):
         # Add footer with signing line and current date
         footer_paragraph = doc.add_paragraph()
-        signing_line = footer_paragraph.add_run("__________________________\nПодпись\n")
+        signing_line = footer_paragraph.add_run("Подпись ___________\n Дата ")
         signing_line.add_text(datetime.now().strftime("%d.%m.%Y"))  # Add current date
         signing_line.font.size = Pt(10)
         cls._set_font(doc, "Calibri")

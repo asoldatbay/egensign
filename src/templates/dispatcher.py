@@ -1,6 +1,7 @@
 from rest_framework.exceptions import APIException
 
-from src.templates.scripts.resign import ResignScript
+from templates.scripts.resign import ResignScript
+from templates.scripts.student_practice import StudentPracticeScript
 
 
 class Dispatcher:
@@ -18,3 +19,4 @@ class Dispatcher:
 
 dispatcher = Dispatcher()
 dispatcher.register(ResignScript)
+dispatcher.register(StudentPracticeScript)

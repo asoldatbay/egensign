@@ -13,7 +13,7 @@ class ConvertAPIService:
                         "Name": "File",
                         "FileValue": {
                             "Name": f"my_file.docx",
-                            "Data": file64
+                            "Data": file64.decode('utf-8')
                         }
                     }
                 ]
@@ -21,4 +21,4 @@ class ConvertAPIService:
         )
         r.raise_for_status()
 
-        return r.json(), r.headers['Content-Type']
+        return r.json(), "application/pdf"

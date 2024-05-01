@@ -1,6 +1,13 @@
 from rest_framework import serializers
 
-from src.templates.models import Template
+from templates.models import Template
+
+
+class TemplateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Template
+        fields = '__all__'
 
 
 class ReadTemplateSerializer(serializers.ModelSerializer):
