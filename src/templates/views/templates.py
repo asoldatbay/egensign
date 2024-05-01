@@ -18,7 +18,7 @@ class TemplatesViewSet(ViewSet):
         templates = Template.objects.all()
         paginator = Paginator(templates, 10)
 
-        page_obj = paginator.get_page(int(request.query_params['page']))
+        page_obj = paginator.get_page(int(request.query_params.get('page', 1)))
         return Response({
             "count": len(templates),
             "results": ReadTemplateSerializer(list(page_obj.object_list), many=True).data,
