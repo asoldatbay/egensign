@@ -1,0 +1,12 @@
+Django==3.1.10
+django-environ==0.4.5
+djangorestframework==3.12.4
+django-cors-headers==3.8.0
+
+psycopg2-binary==2.9.3
+
+python-docx
+pytz
+
+requests==2.27.1
+PyJWT==2.3.0
