@@ -21,4 +21,4 @@ class Dispatcher:
 dispatcher = Dispatcher()
 # dispatcher.register(ResignScript)
 # dispatcher.register(StudentPracticeScript)
-dispatcher.register(PregnancyVacationScript)
+# dispatcher.register(PregnancyVacationScript)
