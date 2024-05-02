@@ -4,6 +4,8 @@ from templates.scripts.resign import ResignScript
 # from templates.scripts.student_practice import StudentPracticeScript
 from templates.scripts.pregnancy_vacation import PregnancyVacationScript
 
+from templates.scripts.student_practice_done import StudentPracticeDoneScript
+
 
 class Dispatcher:
     registry = {}
@@ -19,6 +21,6 @@ class Dispatcher:
 
 
 dispatcher = Dispatcher()
-# dispatcher.register(ResignScript)
-# dispatcher.register(StudentPracticeScript)
+dispatcher.register(ResignScript)
+dispatcher.register(StudentPracticeDoneScript)
 dispatcher.register(PregnancyVacationScript)
