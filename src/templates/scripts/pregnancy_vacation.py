@@ -9,7 +9,7 @@ from templates.scripts.base_script import BaseScript
 
 class PregnancyVacationScript(BaseScript):
 
-    template = None  # Template.objects.get(script_code="fec2d982-8922-42bc-ac87-ea1a6c2ecea3")
+    template = Template.objects.get(script_code="e8bd2d2a-9dde-45c0-b22c-f4071117e8a8")
 
     @classmethod
     def _get_default_filename(cls):
