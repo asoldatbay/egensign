@@ -1,7 +1,7 @@
 from rest_framework.exceptions import APIException
 
 from templates.scripts.resign import ResignScript
-from templates.scripts.student_practice import StudentPracticeScript
+# from templates.scripts.student_practice import StudentPracticeScript
 from templates.scripts.pregnancy_vacation import PregnancyVacationScript
 
 
