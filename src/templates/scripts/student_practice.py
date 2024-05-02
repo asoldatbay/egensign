@@ -9,7 +9,7 @@ from templates.scripts.base_script import BaseScript
 
 class StudentPracticeScript(BaseScript):
 
-    template = None  # Template.objects.get(script_code="9072546d-77e7-4b74-9263-54895d0cf246")
+    template = Template.objects.get(script_code="fec2d982-8922-42bc-ac87-ea1a6c2ecea3")
 
     @classmethod
     def _get_default_filename(cls):
