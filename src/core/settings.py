@@ -105,7 +105,7 @@ DATABASES = {
         'HOST': env("POSTGRES_HOST"),
         'PORT': env("POSTGRES_PORT"),
         "OPTIONS": {
-            'options': f'-c search_path={env("POSTGRES_SCHEMA")},public'
+            'options': f'-c search_path={env("POSTGRES_SCHEMA")}'
         }
     }
 }
