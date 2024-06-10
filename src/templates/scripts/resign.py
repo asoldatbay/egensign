@@ -9,7 +9,7 @@ from templates.scripts.base_script import BaseScript
 
 class ResignScript(BaseScript):
 
-    template = Template.objects.get(script_code="a53fb639-15b4-468c-9e28-b696e063098a")
+    template = Template.objects.get(script_code="8d92f6b0-da7b-4a35-a8c9-256f6829f7cd")
 
     @classmethod
     def _get_default_filename(cls):
